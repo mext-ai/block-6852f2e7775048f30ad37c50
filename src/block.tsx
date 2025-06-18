@@ -5,25 +5,19 @@ interface BlockProps {
   description?: string;
 }
 
-// This should definitely cause a compilation error
+// This is definitely invalid TypeScript/JavaScript syntax
 const Block: React.FC<BlockProps> = ({ title, description }) => {
   
-  // Severe syntax errors that should break compilation:
-  
-  // 1. Completely malformed JavaScript
-  const ??? = invalid syntax here!!!
-  
-  // 2. Unclosed string and broken JSX
+  // Invalid syntax that should break the compiler
   return (
     <div>
-      <h1>{"Unclosed string
-      <p>This should break everything</p>
+      <h1>{title || "Error Test Block"}</h1>
+      <p>{description || "Testing error overlay"}</p>
     </div>
   );
-  
-  // 3. Random characters that make no sense
-  @@##$$%%^^&&**(())
-  
-}; // Missing closing elements and syntax
+};
+
+// Missing import and invalid syntax
+const invalidStatement = 
 
 export default Block;
