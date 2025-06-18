@@ -1,30 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 interface BlockProps {
+  title?: string;
+  description?: string;
 }
 
-const Block: React.FC<BlockProps> = () => {
+// Intentional compilation errors for testing error overlay:
+
+// 1. Using undeclared variable
+const undeclaredVariable = someUndefinedVariable;
+
+// 2. Wrong type assignment
+const wrongType: string = 123;
+
+// 3. Missing return type and syntax error
+const Block: React.FC<BlockProps> = ({ title, description }) => {
+  
+  // 4. Using non-existent property
+  const nonExistent = React.nonExistentProperty;
+  
+  // 5. Syntax error - missing closing brace
+  if (true) {
+    console.log("Missing closing brace"
+  
+  // 6. Wrong JSX syntax
   return (
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh',
-      fontFamily: 'Arial, sans-serif',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      margin: 0,
-      color: 'white'
-    }}>
-      <h1 style={{
-        fontSize: '3rem',
-        textAlign: 'center',
-        textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
-        margin: 0
-      }}>
-        Hi there, I'm an empty block ✨
-      </h1>
+    <div>
+      <h1>{title || "Test Block with Errors"}</h1>
+      <p>{description || "This block has intentional compilation errors"}</p>
+      
+      {/* 7. Invalid JSX - self-closing div with content */}
+      <div />Content should not be here</div>
+      
+      {/* 8. Using undefined variable in JSX */}
+      <p>{undefinedJSXVariable}</p>
     </div>
   );
 };
 
-export default Block;
+// 9. Export with wrong syntax
+export default Block
+// Missing semicolon and other issues above should trigger multiple errors
