@@ -5,39 +5,25 @@ interface BlockProps {
   description?: string;
 }
 
-// Intentional compilation errors for testing error overlay:
-
-// 1. Using undeclared variable
-const undeclaredVariable = someUndefinedVariable;
-
-// 2. Wrong type assignment
-const wrongType: string = 123;
-
-// 3. Missing return type and syntax error
+// This should definitely cause a compilation error
 const Block: React.FC<BlockProps> = ({ title, description }) => {
   
-  // 4. Using non-existent property
-  const nonExistent = React.nonExistentProperty;
+  // Severe syntax errors that should break compilation:
   
-  // 5. Syntax error - missing closing brace
-  if (true) {
-    console.log("Missing closing brace"
+  // 1. Completely malformed JavaScript
+  const ??? = invalid syntax here!!!
   
-  // 6. Wrong JSX syntax
+  // 2. Unclosed string and broken JSX
   return (
     <div>
-      <h1>{title || "Test Block with Errors"}</h1>
-      <p>{description || "This block has intentional compilation errors"}</p>
-      
-      {/* 7. Invalid JSX - self-closing div with content */}
-      <div />Content should not be here</div>
-      
-      {/* 8. Using undefined variable in JSX */}
-      <p>{undefinedJSXVariable}</p>
+      <h1>{"Unclosed string
+      <p>This should break everything</p>
     </div>
   );
-};
+  
+  // 3. Random characters that make no sense
+  @@##$$%%^^&&**(())
+  
+}; // Missing closing elements and syntax
 
-// 9. Export with wrong syntax
-export default Block
-// Missing semicolon and other issues above should trigger multiple errors
+export default Block;
